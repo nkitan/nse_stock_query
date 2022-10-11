@@ -1,3 +1,4 @@
+from datetime import datetime, date, timedelta
 import mysql.connector
 from mysql.connector import errorcode
 from tabulate import tabulate
@@ -30,8 +31,7 @@ def run_query(query):
     else:
         con.close()
 
-def top_25_gainers():
-    query = "SELECT *, ((bclose - bopen) / bopen ) AS Gains FROM Bhavcopy ORDER BY Gains DESC LIMIT 25;"
+def top_25_gainers_for(date):
+    print("Querying top 25 gainers for " + date)
+    query = "SELECT *, ((bclose - bopen) / bopen ) AS Gains FROM Bhavcopy WHERE btimestamp = '" + str(date) + "' ORDER BY Gains DESC LIMIT 25;"
     run_query(query)
-
-top_25_gainers()

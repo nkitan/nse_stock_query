@@ -1,7 +1,6 @@
-from time import strptime
 import pandas as pd
 import os
-from datetime import date, datetime
+from datetime import datetime
 import mysql.connector
 from mysql.connector import errorcode
 
@@ -70,6 +69,3 @@ def load_bhavcopy():
                 print(err)
         else:
             con.close()
-
-load_securities()
-load_bhavcopy()

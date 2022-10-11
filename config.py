@@ -1,5 +1,5 @@
 securities_url = 'https://archives.nseindia.com/content/equities/EQUITY_L.csv'
-bhavcopy_url = 'https://archives.nseindia.com/content/historical/EQUITIES/2022/OCT/cm10OCT2022bhav.csv.zip'
+bhavcopy_base_url = 'https://archives.nseindia.com/content/historical/EQUITIES'
 
 db_user = 'root'
 db_password = 'sH3ym00reC#'
@@ -8,5 +8,6 @@ db_host = '127.0.0.1'
 
 date_format = '%d-%b-%Y'
 
+# set to False to remove debug output
 debug = True
 
