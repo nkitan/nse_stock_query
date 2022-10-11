@@ -1,0 +1,5 @@
+pandas
+requests
+mysql
+mysql-connector-python
+tabulate
