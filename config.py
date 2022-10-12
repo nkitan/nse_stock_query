@@ -8,6 +8,5 @@ db_host = '127.0.0.1'
 
 date_format = '%d-%b-%Y'
 
-# set to False to remove debug output
+# set to True to print debug output
 debug = True
-

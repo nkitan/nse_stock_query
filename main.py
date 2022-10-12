@@ -11,7 +11,9 @@ while(run):
     print("5. Load Bhavcopy")
     print("6. Get top 25 gainers for today")
     print("7. Get top 25 gainers day wise")
-    print("8. Exit")
+    print("8. Extract and Load All")
+    print("9. Get top 25 historical gainers")
+    print("10. Exit")
     print("ENTER CHOICE: ")
     
     try: 
@@ -40,6 +42,15 @@ while(run):
                 top_25_gainers_for((datetime.today() - timedelta(days=i)).strftime('%Y-%m-%d'))
         
         elif(choice == 8):
+            get_securities()
+            get_monthly_bhavcopy()
+            load_securities()
+            load_bhavcopy()
+
+        elif(choice == 9):
+            top_25_historical_gainers()
+
+        elif(choice == 10):
             run = False
 
         else:

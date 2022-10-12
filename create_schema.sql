@@ -8,8 +8,8 @@ CREATE TABLE Securities (
     series VARCHAR(20),
     dateoflisting DATE,
     paidupvalue MEDIUMINT,
-    marketlot INT, 
-    facevalue INT,
+    marketlot FLOAT, 
+    facevalue FLOAT,
     PRIMARY KEY(isin)
 );
 
@@ -17,13 +17,13 @@ CREATE TABLE Bhavcopy (
     isin VARCHAR(12),
     symbol VARCHAR(256),
     series VARCHAR(20),
-    bopen INT,
-    high INT,
-    low INT,
-    bclose INT,
-    blast INT,
-    prevclose INT,
-    tottrdqty INT,
+    bopen FLOAT,
+    high FLOAT,
+    low FLOAT,
+    bclose FLOAT,
+    blast FLOAT,
+    prevclose FLOAT,
+    tottrdqty FLOAT,
     tottrdval BIGINT,
     btimestamp DATE,
     totaltrades INT

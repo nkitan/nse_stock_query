@@ -10,7 +10,7 @@ from insert import add_security, add_bhavcopy
 
 def load_securities():
     print('loading securities')
-    # Import CSV
+    # import csv
     data = pd.read_csv(r'./securities/securities.csv')
     securities = pd.DataFrame(data)
 
@@ -18,12 +18,15 @@ def load_securities():
         con = mysql.connector.connect(user=db_user, password=db_password, host=db_host, database=db_name)
         cursor = con.cursor()
 
+        # for each row in securities df
         for index, s in securities.iterrows(): 
             debug and print(s)
-            data_security = (s[0], s[1], s[2], datetime.strptime(s[3], date_format).date(), s[4], s[5], s[6], s[7])
+
+            # collect data to be inserted
+            data_security = (s[0], s[1], s[2], datetime.strptime(s[3], date_format).date(), float(s[4]), float(s[5]), s[6], s[7])
             debug and print(data_security)
 
-            # Insert new security
+            # insert new data
             cursor.execute(add_security, data_security)
         con.commit()
 
@@ -37,13 +40,16 @@ def load_securities():
     else:
         con.close()
 
+# load bhavcopy data into database
 def load_bhavcopy():
     print('loading bhavcopies')
     directory = r'./bhavcopy'
+    
+    # for each bhavcopy in bhavcopy/
     for filename in os.listdir(directory):
         f = os.path.join(directory, filename)
         if os.path.isfile(f):
-            # import csv
+            # import csv as dataframe
             data = pd.read_csv(f)
             bhavcopies = pd.DataFrame(data)
 
@@ -51,12 +57,15 @@ def load_bhavcopy():
             con = mysql.connector.connect(user=db_user, password=db_password, host=db_host, database=db_name)
             cursor = con.cursor()
 
+            # for each row in dataframe
             for index, b in bhavcopies.iterrows():
                 debug and print(b)
-                data_bhavcopy = (b[0], str(b[1]), b[2], b[3], b[4], b[5], b[6], b[7], b[8], b[9], datetime.strptime(b[10], date_format).date(), b[11], b[12])
+
+                # collect data to be inserted
+                data_bhavcopy = (b[0], str(b[1]), float(b[2]), float(b[3]), float(b[4]), float(b[5]), float(b[6]), float(b[7]), float(b[8]), int(b[9]), datetime.strptime(b[10], date_format).date(), b[11], b[12])
                 debug and print(data_bhavcopy)
 
-                # Insert new bhavcopy
+                # insert new row
                 cursor.execute(add_bhavcopy, data_bhavcopy)
             con.commit()
 
